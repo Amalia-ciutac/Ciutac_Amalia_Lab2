@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Policy;
 
 namespace Ciutac_Amalia_Lab2.Models
 {
@@ -14,5 +15,8 @@ namespace Ciutac_Amalia_Lab2.Models
 
         [DataType(DataType.Date)]
         public DateTime PublishingDate { get; set; }
+
+        public int? PublisherID { get; set; }
+        public System.Security.Policy.Publisher? Publisher { get; set; }
     }
 }
