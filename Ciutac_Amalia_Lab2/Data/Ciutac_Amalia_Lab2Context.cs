@@ -15,5 +15,7 @@ namespace Ciutac_Amalia_Lab2.Data
         }
 
         public DbSet<Ciutac_Amalia_Lab2.Models.Book> Book { get; set; } = default!;
+
+        public DbSet<Ciutac_Amalia_Lab2.Models.Category>? Category { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Ciutac_Amalia_Lab2.Data;
 using Ciutac_Amalia_Lab2.Models;
 
-namespace Ciutac_Amalia_Lab2.Pages.Books
+namespace Ciutac_Amalia_Lab2.Pages.Categories
 {
     public class DeleteModel : PageModel
     {
@@ -20,40 +20,40 @@ namespace Ciutac_Amalia_Lab2.Pages.Books
         }
 
         [BindProperty]
-      public Book Book { get; set; }
+      public Category Category { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Category == null)
             {
                 return NotFound();
             }
 
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            var category = await _context.Category.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (book == null)
+            if (category == null)
             {
                 return NotFound();
             }
             else 
             {
-                Book = book;
+                Category = category;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Category == null)
             {
                 return NotFound();
             }
-            var book = await _context.Book.FindAsync(id);
+            var category = await _context.Category.FindAsync(id);
 
-            if (book != null)
+            if (category != null)
             {
-                Book = book;
-                _context.Book.Remove(Book);
+                Category = category;
+                _context.Category.Remove(Category);
                 await _context.SaveChangesAsync();
             }
 
